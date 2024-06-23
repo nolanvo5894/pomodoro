@@ -4,7 +4,7 @@ import random
 import emoji
 
 def pomodoro_timer():
-    st.title('Pomodoro for Wifey')
+    st.title('Pomodoro for Wifey 👩‍💻🕰️')
     st.image('avocado_clock.png', width = 500)
     # Initialize or get the session state variables
     if 'session_seconds' not in st.session_state:
@@ -17,7 +17,7 @@ def pomodoro_timer():
         st.session_state.timer_paused = False
 
 
-    st.sidebar.title('Pomodoro Settings')
+    st.sidebar.title('Pomodoro Settings 🛎️')
     st.sidebar.write("Adjust the session and break lengths to customize your Pomodoro experience.")
     
     # Set default values for the session and break
@@ -30,7 +30,7 @@ def pomodoro_timer():
         st.session_state.break_seconds = break_time * 60
 
     # Move Start/Pause and Reset buttons to the sidebar
-    if st.sidebar.button('Start/Pause'):
+    if st.sidebar.button('Start/Pause ⏯️'):
         if st.session_state.timer_running:
             st.session_state.timer_paused = True
             st.session_state.timer_running = False
@@ -38,7 +38,7 @@ def pomodoro_timer():
             st.session_state.timer_running = True
             st.session_state.timer_paused = False
 
-    if st.sidebar.button('Reset'):
+    if st.sidebar.button('Reset ⌛'):
         st.session_state.session_seconds = session_time * 60
         st.session_state.break_seconds = break_time * 60
         st.session_state.timer_running = False
@@ -61,10 +61,10 @@ def pomodoro_timer():
 
         if st.session_state.session_seconds == 0:
             st.success('Session complete! Time for a break!')
-            random_reminders = ['### Vo da danh rang chua?',
-                                '### Vo da an sang chua?',
-                                '### Vo da tam chua?',
-                                '### Vo da uong thuoc chua?']
+            random_reminders = ['### Vo da danh rang chua? 🪥😁',
+                                '### Vo da an sang chua? 🥯🥛🍳🥗',
+                                '### Vo da tam chua? 🛀🧴🪒🫧',
+                                '### Vo da uong thuoc chua? 💊💪🏻']
             st.markdown(random.choice(random_reminders))
             st.markdown('# Du vo chua lam gi thi chong van yeu vo :heart: :bouquet: :heart:')
 
