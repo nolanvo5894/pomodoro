@@ -64,7 +64,8 @@ def pomodoro_timer():
             random_reminders = ['### Vo da danh rang chua? 🪥😁',
                                 '### Vo da an sang chua? 🥯🥛🍳🥗',
                                 '### Vo da tam chua? 🛀🧴🪒🫧',
-                                '### Vo da uong thuoc chua? 💊💪🏻']
+                                '### Vo da uong thuoc chua? 💊💪🏻',
+                                '### Vo co them kem khong? 🍦']
             st.markdown(random.choice(random_reminders))
             st.markdown('# Du vo chua lam gi thi chong van yeu vo :heart: :bouquet: :heart:')
 
