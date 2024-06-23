@@ -16,6 +16,10 @@ def pomodoro_timer():
     if 'timer_paused' not in st.session_state:
         st.session_state.timer_paused = False
 
+
+    st.sidebar.title('Pomodoro Settings')
+    st.sidebar.write("Adjust the session and break lengths to customize your Pomodoro experience.")
+    
     # Set default values for the session and break
     session_time = st.sidebar.number_input('Session time (minutes)', min_value=1, value=25)
     break_time = st.sidebar.number_input('Break time (minutes)', min_value=1, value=5)
@@ -25,22 +29,20 @@ def pomodoro_timer():
         st.session_state.session_seconds = session_time * 60
         st.session_state.break_seconds = break_time * 60
 
-    # Start, pause, and reset buttons
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button('Start/Pause'):
-            if st.session_state.timer_running:
-                st.session_state.timer_paused = True
-                st.session_state.timer_running = False
-            else:
-                st.session_state.timer_running = True
-                st.session_state.timer_paused = False
-    with col2:
-        if st.button('Reset'):
-            st.session_state.session_seconds = session_time * 60
-            st.session_state.break_seconds = break_time * 60
+    # Move Start/Pause and Reset buttons to the sidebar
+    if st.sidebar.button('Start/Pause'):
+        if st.session_state.timer_running:
+            st.session_state.timer_paused = True
             st.session_state.timer_running = False
+        else:
+            st.session_state.timer_running = True
             st.session_state.timer_paused = False
+
+    if st.sidebar.button('Reset'):
+        st.session_state.session_seconds = session_time * 60
+        st.session_state.break_seconds = break_time * 60
+        st.session_state.timer_running = False
+        st.session_state.timer_paused = False
 
     # Timer display setup
     timer_display = st.empty()
